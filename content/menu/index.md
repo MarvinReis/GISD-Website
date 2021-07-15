@@ -10,6 +10,10 @@ headless: true
   - [Bildungsdimension]({{< relref "/docs/score-check/bildungsdimension/index" >}})
   - [Ausreißer]({{< relref "/docs/score-check/ausreißer/index" >}})
   
+- [**Karte**]({{< relref "/docs/karte" >}})
+
+- [**Analyse mit Lebenserwartung**]({{< relref "/docs/analyse-lebenserwartung" >}})
+  
 - [**Vergleich der GISD-Versionen**]({{< relref "/docs/2021-07-15-gisd-vergleich" >}})
 
 - [**Example Site**]({{< relref "/docs/example" >}})
@@ -20,12 +24,4 @@ headless: true
   - [3rd]({{< relref "/docs/example/collapsed/3rd-level" >}})
 <br />
 
-- **Shortcodes**
-- [Buttons]({{< relref "/docs/shortcodes/buttons" >}})
-- [Columns]({{< relref "/docs/shortcodes/columns" >}})
-- [Expand]({{< relref "/docs/shortcodes/expand" >}})
-- [Hints]({{< relref "/docs/shortcodes/hints" >}})
-- [Katex]({{< relref "/docs/shortcodes/katex" >}})
-- [Mermaid]({{< relref "/docs/shortcodes/mermaid" >}})
-- [Tabs]({{< relref "/docs/shortcodes/tabs" >}})
-<br />
+
