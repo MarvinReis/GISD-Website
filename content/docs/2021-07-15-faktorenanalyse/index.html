@@ -1,0 +1,508 @@
+---
+title: Faktorenanalyse
+author: Niels Michalski, Marvin Reis
+date: '2021-07-15'
+slug: []
+categories:
+  - R
+tags:
+  - R Markdown
+weight: 1
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="faktorenanalyse" class="section level1">
+<h1>Faktorenanalyse</h1>
+<p>In diesem Codeblog wird die Faktorenanalyse des GISD analysiert.</p>
+<div id="faktorenanalyse-der-gepoolten-querschnitte" class="section level2">
+<h2>Faktorenanalyse der gepoolten Querschnitte</h2>
+<p>Es werden Hauptkomponentenanalysen für jede der drei Subskalen auf Basis der imputierten Daten geschätzt.</p>
+<div id="eigenwerte-der-komponenten" class="section level3">
+<h3>Eigenwerte der Komponenten</h3>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<table>
+<caption><span id="tab:unnamed-chunk-2">Table 1: </span>Varianz der Faktoren (Eigenvektoren)</caption>
+<thead>
+<tr class="header">
+<th align="left">Faktoren</th>
+<th align="left">Varianz Arbeitswelt</th>
+<th align="left">Varianz Einkommen</th>
+<th align="left">Varianz Bildung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Faktor 1</td>
+<td align="left">1.712</td>
+<td align="left">2.091</td>
+<td align="left">1.332</td>
+</tr>
+<tr class="even">
+<td align="left">Faktor 2</td>
+<td align="left">0.87</td>
+<td align="left">0.739</td>
+<td align="left">0.982</td>
+</tr>
+<tr class="odd">
+<td align="left">Faktor 3</td>
+<td align="left">0.418</td>
+<td align="left">0.17</td>
+<td align="left">0.686</td>
+</tr>
+</tbody>
+</table>
+<p>Die PCA zeigt drei Hauptkomponenten für die Dimension Arbeitswelt. Nur die erste Komponente hat einen Eigenwert über eins. Die Faktorladungen der drei Variablen (Beschäftigungsquote, Arbeitslosigkeit und Bruttoverdienst) entsprechen dabei den Ertwartungen.</p>
+<p>Die PCA zeigt drei Hauptkomponenten für die Dimension Einkommen. Nur die erste Komponente hat einen Eigenwert über zwei. Die Faktorladungen der drei Variablen (Einkommensteuer, Haushaltseinkommen und Schuldnerquote) entsprechen dabei den Erwartungen.</p>
+<p>Die PCA zeigt drei Hauptkomponenten für die Dimension Bildung. Sowohl die erste als auch die zweite Komponente haben dabei einen Eigenwert über eins. Die Faktorladungen der drei Variablen (Beschäftigte mit akad. Abschluss, Beschäftigte ohne Abschlus und Schulabgänger ohne Abschluss) entsprechen somit nicht den Erwartungen.</p>
+<p>Fazit: Die Betrachtung der Eigenwerte weist bei der Bildungsdimension auf zwei Hauptkomponenten hin.
+Hier sollte eine detailliertere Analyse folgen.</p>
+</div>
+<div id="faktorladungen" class="section level3">
+<h3>Faktorladungen</h3>
+<table>
+<caption><span id="tab:unnamed-chunk-3">Table 2: </span>Faktorladungen und Anteile an den Teilscores sowie am Index</caption>
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Dimension</th>
+<th align="left">Faktorladung</th>
+<th align="left">Component</th>
+<th align="right">Anteil Teilscore</th>
+<th align="right">Anteil GISD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Beschäftigtenquote (gedeckelt)</td>
+<td align="left">Arbeitswelt</td>
+<td align="left">0.54</td>
+<td align="left">0.412</td>
+<td align="right">17.0</td>
+<td align="right">5.7</td>
+</tr>
+<tr class="even">
+<td align="left">Arbeitslosigkeit</td>
+<td align="left">Arbeitswelt</td>
+<td align="left">-0.619</td>
+<td align="left">-0.663</td>
+<td align="right">44.0</td>
+<td align="right">14.7</td>
+</tr>
+<tr class="odd">
+<td align="left">Bruttoverdienst (log.)</td>
+<td align="left">Arbeitswelt</td>
+<td align="left">0.404</td>
+<td align="left">0.624</td>
+<td align="right">38.9</td>
+<td align="right">13.0</td>
+</tr>
+<tr class="even">
+<td align="left">Einkommensteuer (log.)</td>
+<td align="left">Einkommen</td>
+<td align="left">0.917</td>
+<td align="left">0.634</td>
+<td align="right">40.2</td>
+<td align="right">13.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Haushaltseinkommen (log.)</td>
+<td align="left">Einkommen</td>
+<td align="left">0.92</td>
+<td align="left">0.636</td>
+<td align="right">40.4</td>
+<td align="right">13.5</td>
+</tr>
+<tr class="even">
+<td align="left">Schuldnerquote</td>
+<td align="left">Einkommen</td>
+<td align="left">-0.635</td>
+<td align="left">-0.439</td>
+<td align="right">19.3</td>
+<td align="right">6.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Beschäftigte mit akad. Abschluss</td>
+<td align="left">Bildung</td>
+<td align="left">0.802</td>
+<td align="left">0.695</td>
+<td align="right">48.3</td>
+<td align="right">16.1</td>
+</tr>
+<tr class="even">
+<td align="left">Beschäftigte ohne Abschluss (adj.)</td>
+<td align="left">Bildung</td>
+<td align="left">-0.296</td>
+<td align="left">-0.256</td>
+<td align="right">6.6</td>
+<td align="right">2.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Schulabgänger ohne Abschluss (adj.)</td>
+<td align="left">Bildung</td>
+<td align="left">-0.776</td>
+<td align="left">-0.672</td>
+<td align="right">45.2</td>
+<td align="right">15.1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="faktorenanalyse-gepoolte-querschnitte-4-items-bildung" class="section level2">
+<h2>Faktorenanalyse gepoolte Querschnitte (4 Items Bildung)</h2>
+<div id="eigenwerte-der-komponenten-1" class="section level3">
+<h3>Eigenwerte der Komponenten</h3>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<table>
+<caption><span id="tab:unnamed-chunk-5">Table 3: </span>Varianz der Faktoren (Eigenvektoren)</caption>
+<thead>
+<tr class="header">
+<th align="left">Faktoren</th>
+<th align="left">Varianz Arbeitswelt</th>
+<th align="left">Varianz Einkommen</th>
+<th align="left">Varianz Bildung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Faktor 1</td>
+<td align="left">1.712</td>
+<td align="left">2.091</td>
+<td align="left">1.796</td>
+</tr>
+<tr class="even">
+<td align="left">Faktor 2</td>
+<td align="left">0.87</td>
+<td align="left">0.739</td>
+<td align="left">1.007</td>
+</tr>
+<tr class="odd">
+<td align="left">Faktor 3</td>
+<td align="left">0.418</td>
+<td align="left">0.17</td>
+<td align="left">0.833</td>
+</tr>
+<tr class="even">
+<td align="left">Faktor 4</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">0.364</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="faktorladungen-1" class="section level3">
+<h3>Faktorladungen</h3>
+<table>
+<caption><span id="tab:unnamed-chunk-6">Table 4: </span>Faktorladungen und Anteile an den Teilscores sowie am Index</caption>
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Dimension</th>
+<th align="left">Faktorladung</th>
+<th align="left">Component</th>
+<th align="right">Anteil Teilscore</th>
+<th align="right">Anteil GISD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Beschäftigtenquote (gedeckelt)</td>
+<td align="left">Arbeitswelt</td>
+<td align="left">0.54</td>
+<td align="left">0.412</td>
+<td align="right">17.0</td>
+<td align="right">5.7</td>
+</tr>
+<tr class="even">
+<td align="left">Arbeitslosigkeit</td>
+<td align="left">Arbeitswelt</td>
+<td align="left">-0.868</td>
+<td align="left">-0.663</td>
+<td align="right">44.0</td>
+<td align="right">14.7</td>
+</tr>
+<tr class="odd">
+<td align="left">Bruttoverdienst (log.)</td>
+<td align="left">Arbeitswelt</td>
+<td align="left">0.817</td>
+<td align="left">0.624</td>
+<td align="right">38.9</td>
+<td align="right">13.0</td>
+</tr>
+<tr class="even">
+<td align="left">Einkommensteuer (log.)</td>
+<td align="left">Einkommen</td>
+<td align="left">0.917</td>
+<td align="left">0.634</td>
+<td align="right">40.2</td>
+<td align="right">13.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Haushaltseinkommen (log.)</td>
+<td align="left">Einkommen</td>
+<td align="left">0.92</td>
+<td align="left">0.636</td>
+<td align="right">40.4</td>
+<td align="right">13.5</td>
+</tr>
+<tr class="even">
+<td align="left">Schuldnerquote</td>
+<td align="left">Einkommen</td>
+<td align="left">-0.635</td>
+<td align="left">-0.439</td>
+<td align="right">19.3</td>
+<td align="right">6.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Beschäftigte mit akad. Abschluss</td>
+<td align="left">Bildung</td>
+<td align="left">0.878</td>
+<td align="left">0.655</td>
+<td align="right">42.9</td>
+<td align="right">14.3</td>
+</tr>
+<tr class="even">
+<td align="left">Beschäftigte ohne Abschluss (adj.)</td>
+<td align="left">Bildung</td>
+<td align="left">-0.1</td>
+<td align="left">-0.075</td>
+<td align="right">0.6</td>
+<td align="right">0.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Schulabgänger ohne Abschluss (adj.)</td>
+<td align="left">Bildung</td>
+<td align="left">-0.569</td>
+<td align="left">-0.424</td>
+<td align="right">18.0</td>
+<td align="right">6.0</td>
+</tr>
+<tr class="even">
+<td align="left">Schulabgänger mit Hochschulreife (adj.)</td>
+<td align="left">Bildung</td>
+<td align="left">0.832</td>
+<td align="left">0.621</td>
+<td align="right">38.6</td>
+<td align="right">12.9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="faktorenanalyse-nur-für-daten-des-jahres-2017" class="section level2">
+<h2>Faktorenanalyse nur für Daten des Jahres 2017</h2>
+<p>Es werden Hauptkomponentenanalysen für jede der drei Subskalen auf Basis der imputierten Daten geschätzt, hier nur mit den Daten von 2017.</p>
+<div id="eigenwerte-der-komponenten-2" class="section level3">
+<h3>Eigenwerte der Komponenten</h3>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<table>
+<caption><span id="tab:unnamed-chunk-8">Table 5: </span>Varianz der Faktoren (Eigenvektoren) für 2017</caption>
+<thead>
+<tr class="header">
+<th align="left">Faktoren</th>
+<th align="left">Varianz Arbeitswelt</th>
+<th align="left">Varianz Einkommen</th>
+<th align="left">Varianz Bildung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Faktor 1</td>
+<td align="left">1.434</td>
+<td align="left">1.995</td>
+<td align="left">1.194</td>
+</tr>
+<tr class="even">
+<td align="left">Faktor 2</td>
+<td align="left">0.977</td>
+<td align="left">0.656</td>
+<td align="left">0.996</td>
+</tr>
+<tr class="odd">
+<td align="left">Faktor 3</td>
+<td align="left">0.589</td>
+<td align="left">0.349</td>
+<td align="left">0.81</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="faktorladungen-2" class="section level3">
+<h3>Faktorladungen</h3>
+<table>
+<caption><span id="tab:unnamed-chunk-9">Table 6: </span>Komponenten und Anteile der Dimensionen für 2017</caption>
+<thead>
+<tr class="header">
+<th align="left">Variable</th>
+<th align="left">Dimension</th>
+<th align="left">Faktorladung</th>
+<th align="left">Coponent</th>
+<th align="right">Anteil Dimension</th>
+<th align="right">Anteil GISD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Beschäftigtenquote (gedeckelt)</td>
+<td align="left">Arbeitswelt</td>
+<td align="left">0.278</td>
+<td align="left">0.232</td>
+<td align="right">5.4</td>
+<td align="right">1.8</td>
+</tr>
+<tr class="even">
+<td align="left">Arbeitslosigkeit</td>
+<td align="left">Arbeitswelt</td>
+<td align="left">-0.829</td>
+<td align="left">-0.692</td>
+<td align="right">47.9</td>
+<td align="right">16.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Bruttoverdienst (log.)</td>
+<td align="left">Arbeitswelt</td>
+<td align="left">0.819</td>
+<td align="left">0.683</td>
+<td align="right">46.6</td>
+<td align="right">15.5</td>
+</tr>
+<tr class="even">
+<td align="left">Einkommensteuer (log.)</td>
+<td align="left">Einkommen</td>
+<td align="left">0.834</td>
+<td align="left">0.59</td>
+<td align="right">34.8</td>
+<td align="right">11.6</td>
+</tr>
+<tr class="odd">
+<td align="left">Haushaltseinkommen (log.)</td>
+<td align="left">Einkommen</td>
+<td align="left">0.878</td>
+<td align="left">0.622</td>
+<td align="right">38.7</td>
+<td align="right">12.9</td>
+</tr>
+<tr class="even">
+<td align="left">Schuldnerquote</td>
+<td align="left">Einkommen</td>
+<td align="left">-0.727</td>
+<td align="left">-0.515</td>
+<td align="right">26.5</td>
+<td align="right">8.8</td>
+</tr>
+<tr class="odd">
+<td align="left">Beschäftigte mit akad. Abschluss</td>
+<td align="left">Bildung</td>
+<td align="left">-0.32</td>
+<td align="left">-0.293</td>
+<td align="right">8.6</td>
+<td align="right">2.9</td>
+</tr>
+<tr class="even">
+<td align="left">Beschäftigte ohne Abschluss (adj.)</td>
+<td align="left">Bildung</td>
+<td align="left">0.707</td>
+<td align="left">0.648</td>
+<td align="right">42.0</td>
+<td align="right">14.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Schulabgänger ohne Abschluss (adj.)</td>
+<td align="left">Bildung</td>
+<td align="left">0.769</td>
+<td align="left">0.704</td>
+<td align="right">49.6</td>
+<td align="right">16.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="generierung-des-faktorscores-auf-basis-2017" class="section level1">
+<h1>Generierung des Faktorscores auf Basis 2017</h1>
+<div id="verteilung-der-scores-nach-faktorprediction" class="section level2">
+<h2>Verteilung der Scores nach Faktorprediction</h2>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<table>
+<caption><span id="tab:unnamed-chunk-13">Table 7: </span>Korrelation von Arbeitslosigkeit und Faktoren (gepoolt)</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">Arbeitslosigkeit</th>
+<th align="right">Faktor Arbeitswelt</th>
+<th align="right">Faktor Einkommen</th>
+<th align="right">Faktor Bildung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Arbeitslosigkeit</td>
+<td align="right">1.0000000</td>
+<td align="right">0.9404437</td>
+<td align="right">0.8287999</td>
+<td align="right">0.4306211</td>
+</tr>
+<tr class="even">
+<td align="left">Faktor Arbeitswelt</td>
+<td align="right">0.9404437</td>
+<td align="right">1.0000000</td>
+<td align="right">0.8894963</td>
+<td align="right">0.4557980</td>
+</tr>
+<tr class="odd">
+<td align="left">Faktor Einkommen</td>
+<td align="right">0.8287999</td>
+<td align="right">0.8894963</td>
+<td align="right">1.0000000</td>
+<td align="right">0.5795781</td>
+</tr>
+<tr class="even">
+<td align="left">Faktor Bildung</td>
+<td align="right">0.4306211</td>
+<td align="right">0.4557980</td>
+<td align="right">0.5795781</td>
+<td align="right">1.0000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="verteilung-der-scores-nach-normalization" class="section level2">
+<h2>Verteilung der Scores nach Normalization</h2>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<table>
+<caption><span id="tab:unnamed-chunk-15">Table 8: </span>Korrelation der verschiedenen GISD-Scores</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">GISD-Score 2017</th>
+<th align="right">GISD-Score gesamt</th>
+<th align="right">GISD-Score gesamt (Bildung 4 Items)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">GISD_Score_17</td>
+<td align="right">1.0000000</td>
+<td align="right">-0.9762296</td>
+<td align="right">-0.9399300</td>
+</tr>
+<tr class="even">
+<td align="left">GISD_Score</td>
+<td align="right">-0.9762296</td>
+<td align="right">1.0000000</td>
+<td align="right">0.9855439</td>
+</tr>
+<tr class="odd">
+<td align="left">GISD_Score_B4</td>
+<td align="right">-0.9399300</td>
+<td align="right">0.9855439</td>
+<td align="right">1.0000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>

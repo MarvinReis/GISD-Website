@@ -1,41 +1,12 @@
 ---
-title: Introduction
+title: About GISD
 type: docs
 ---
 
-# Acerbo datus maxime
+# GISD - German Index of socio-Economic Deprivation
 
-{{< columns >}}
-## Astris ipse furtiva
+With GISD our aims were to develop a regional socioeconomic deprivation index for Germany that (1) can be used to analyse regional socioeconomic inequalities in health and (2) provides a basis for explaining regional health differences in Germany.
 
-Est in vagis et Pittheus tu arge accipiter regia iram vocatur nurus. Omnes ut
-olivae sensit **arma sorori** deducit, inesset **crudus**, ego vetuere aliis,
-modo arsit? Utinam rapta fiducia valuere litora _adicit cursu_, ad facies
+Originally the GISD data archive was submitted to [GESIS Datorium](https://data.gesis.org/sharing/#!Detail/10.7802/1460). But as we plan to update GISD anually when new data from [INKAR](https://www.inkar.de) is available, it will be hosted at github.
 
-<--->
-
-## Suis quot vota
-
-Ea _furtique_ risere fratres edidit terrae magis. Colla tam mihi tenebat:
-miseram excita suadent es pecudes iam. Concilio _quam_ velatus posset ait quod
-nunc! Fragosis suae dextra geruntur functus vulgata.
-{{< /columns >}}
-
-
-## Tempora nisi nunc
-
-Lorem **markdownum** emicat gestu. Cannis sol pressit ducta. **Est** Idaei,
-tremens ausim se tutaeque, illi ulnis hausit, sed, lumina cutem. Quae avis
-sequens!
-
-    var panel = ram_design;
-    if (backup + system) {
-        file.readPoint = network_native;
-        sidebar_engine_device(cell_tftp_raster,
-                dual_login_paper.adf_vci.application_reader_design(
-                graphicsNvramCdma, lpi_footer_snmp, integer_model));
-    }
-
-## Locis suis novi cum suoque decidit eadem
-
-Idmoniae ripis, at aves, ali missa adest, ut _et autem_, et ab?
+If you need help with GISD please feel free to contact [FG 28 of RKI](https://www.rki.de/DE/Content/Institut/OrgEinheiten/Abt2/FG28/fg28_node.html) or file an Issue at [GitHub](https://github.com/Skeiwalkski/GISD).
