@@ -1,6 +1,6 @@
 # hugo server --minify --themesDir ... --baseURL=http://0.0.0.0:1313/theme/hugo-book/
 
-baseURL = 'https://example.com/'
+baseURL = 'https://GISD-RKI.de/'
 title = 'GISD - German Index of Socio-Economic Deprivation'
 theme = "hugo-book"
 
@@ -31,7 +31,7 @@ enableGitInfo = true
 # [[menu.before]]
 [[menu.after]]
   name = "Github"
-  url = "https://github.com/alex-shpak/hugo-book"
+  url = "https://github.com/Skeiwalkski/GISD"
   weight = 10
 
 [[menu.after]]

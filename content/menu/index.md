@@ -12,7 +12,7 @@ headless: true
   
 - [**Karte**]({{< relref "/docs/karte" >}})
 
-- [**Analyse mit Lebenserwartung**]({{< relref "/docs/analyse-lebenserwartung" >}})
+- [**Analyse mit Lebenserwartung**]({{< relref "/docs/lebenserwartung" >}})
   
 - [**Vergleich der GISD-Versionen**]({{< relref "/docs/2021-07-15-gisd-vergleich" >}})
 
