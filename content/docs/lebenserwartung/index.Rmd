@@ -38,6 +38,7 @@ GISD_Lebenserw_Kreis <- left_join(GISD_data_Kreis, Lebenserwartung_dat, by = "Kr
 GISD_Lebenserw_Kreis$GISD_Score <- (GISD_Lebenserw_Kreis$GISD_Score -min(GISD_Lebenserw_Kreis$GISD_Score ))/(max(GISD_Lebenserw_Kreis$GISD_Score )-min(GISD_Lebenserw_Kreis$GISD_Score ))
 ```
 
+
 ```{r echo=FALSE}
 ggplot(GISD_Lebenserw_Kreis, aes(x = GISD_Score, y = Lebenserwartung)) +
   geom_point(size = 1.5, alpha = 0.5, col = "navy") +
