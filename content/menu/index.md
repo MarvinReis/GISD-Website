@@ -9,11 +9,7 @@ headless: true
   - [Einkommensdimension]({{< relref "/docs/score-check/einkommensdimension/index" >}})
   - [Bildungsdimension]({{< relref "/docs/score-check/bildungsdimension/index" >}})
   - [Ausreißer]({{< relref "/docs/score-check/ausreißer/index" >}})
-  
-- [**Karte**]({{< relref "/docs/karte" >}})
 
-- [**Analyse mit Lebenserwartung**]({{< relref "/docs/lebenserwartung" >}})
-  
 - [**Vergleich der GISD-Versionen**]({{< relref "/docs/2021-07-15-gisd-vergleich" >}})
 
 - [**Example Site**]({{< relref "/docs/example" >}})
