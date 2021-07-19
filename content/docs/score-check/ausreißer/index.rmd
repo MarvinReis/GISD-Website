@@ -3,6 +3,7 @@ title: "Ausreißer"
 author: "Marvin Reis"
 date: "15 7 2021"
 output: html_document
+bookToc: false
 ---
 
 # Ausreißer 
