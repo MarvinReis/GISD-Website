@@ -9,6 +9,7 @@ tags:
   - R Markdown
   - plot
 weight: 1
+bookToc: false
 ---
 
 # Lebenserwartung in den Landkreisen

@@ -4,6 +4,7 @@ author: "Niels Michalski, Marvin Reis"
 date: 2021-07-15
 categories: ["R"]
 tags: ["R Markdown"]
+bookToc: false
 ---
 
 # Vergleich der GISD-Versionen

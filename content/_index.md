@@ -1,6 +1,7 @@
 ---
 title: About GISD
 type: docs
+bookToc: false
 ---
 
 # GISD - German Index of socio-Economic Deprivation
