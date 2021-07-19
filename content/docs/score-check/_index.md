@@ -1,7 +1,7 @@
 ---
 weight: 1
 bookFlatSection: true
-title: "Prüfung der Scripts"
+title: "Prüfung der Indikatoren"
 author: "Marvin Reis"
 ---
 
