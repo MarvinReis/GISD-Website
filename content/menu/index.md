@@ -12,6 +12,7 @@ headless: true
   - [Ausreißer]({{< relref "/docs/score-check/ausreißer/index" >}})
 <br />
 
+- [**Karte**]({{< relref "/docs/karte" >}})
 
 - [**Analyse der Lebenserwartung**]({{< relref "/docs/lebenserwartung" >}})
 <br />
