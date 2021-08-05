@@ -2,22 +2,22 @@
 headless: true
 ---
 
-- [**Faktorenanalyse**]({{< relref "/docs/2021-07-15-faktorenanalyse" >}})
+- [**Faktorenanalyse**]({{< relref "/docs/Faktorenanalyse" >}})
 <br />
 
-- [**Prüfung der Indikatoren**]({{< relref "/docs/score-check" >}})
-  - [Arbeitsdimension]({{< relref "/docs/score-check/arbeitsdimension/index" >}})
-  - [Einkommensdimension]({{< relref "/docs/score-check/einkommensdimension/index" >}})
-  - [Bildungsdimension]({{< relref "/docs/score-check/bildungsdimension/index" >}})
-  - [Ausreißer]({{< relref "/docs/score-check/ausreißer/index" >}})
+- [**Prüfung der Indikatoren**]({{< relref "/docs/Score-Check" >}})
+  - [Arbeitsdimension]({{< relref "/docs/Score-Check/Arbeitsdimension/index" >}})
+  - [Einkommensdimension]({{< relref "/docs/Score-Check/Einkommensdimension/index" >}})
+  - [Bildungsdimension]({{< relref "/docs/Score-Check/Bildungsdimension/index" >}})
+  - [Ausreißer]({{< relref "/docs/Score-Check/Ausreißer/index" >}})
 <br />
 
-- [**Karte**]({{< relref "/docs/karte" >}})
+- [**Karte**]({{< relref "/docs/Karte" >}})
 
-- [**Analyse der Lebenserwartung**]({{< relref "/docs/lebenserwartung" >}})
+- [**Analyse der Lebenserwartung**]({{< relref "/docs/Lebenserwartung" >}})
 <br />
 
-- [**Vergleich der GISD-Versionen**]({{< relref "/docs/2021-07-15-gisd-vergleich" >}})
+- [**Vergleich der GISD-Versionen**]({{< relref "/docs/GISD-Vergleich" >}})
 <br />
 
 
