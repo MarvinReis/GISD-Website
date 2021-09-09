@@ -17,6 +17,7 @@ library("dplyr")
 library("dtplyr")
 library("tidyr")
 library(RColorBrewer)
+library(forcats)
 
 
 knitr::opts_chunk$set(echo = TRUE)
@@ -29,6 +30,25 @@ Kreise_data <- readRDS("C:/git_projects/GISD/Data/SHP/kreise_bkg.rds") %>% lazy_
 
 Kreise_data <- as_tibble(Kreise_data)
 
+Kreise_data <- Kreise_data %>% mutate(GISD_5 = case_when(GISD_5 == 1 ~ "Quintile 1",
+                                                   GISD_5 == 2 ~ "Quintil 2",
+                                                   GISD_5 == 3 ~ "Quintil 3",
+                                                   GISD_5 == 4 ~ "Quintil 4",
+                                                   GISD_5 == 5 ~ "Quintil 5"),
+                                  GISD_5 = fct_relevel(GISD_5, "Quintil 5", "Quintil 4", "Quintil 3", "Quintil 2", "Quintil 1"),
+                                  GISD_10 = case_when(GISD_10 == 1 ~ "Dezil 1",
+                                                   GISD_10 == 2 ~ "Dezil 2",
+                                                   GISD_10 == 3 ~ "Dezil 3",
+                                                   GISD_10 == 4 ~ "Dezil 4",
+                                                   GISD_10 == 5 ~ "Dezil 5",
+                                                   GISD_10 == 6 ~ "Dezil 6",
+                                                   GISD_10 == 7 ~ "Dezil 7",
+                                                   GISD_10 == 8 ~ "Dezil 8",
+                                                   GISD_10 == 9 ~ "Dezil 9",
+                                                   GISD_10 == 10 ~ "Dezil 10"),
+                                  GISD_10 = fct_relevel(GISD_10, "Dezil 10", "Dezil 9", "Dezil 8", "Dezil 7", "Dezil 6", "Dezil 5", "Dezil 4", "Dezil 3", "Dezil 2", "Dezil 1"))
+
+
 GISD_data_Gem <- read.csv("C:/git_projects/GISD/Outfiles/2021_v2/Bund/Gemeinde/Gemeinde.csv") %>% select(Gemeindekennziffer, GISD_Score, GISD_5, GISD_10) %>% distinct(Gemeindekennziffer, .keep_all = TRUE) %>% unique() %>% lazy_dt()
 
 Gemeinden_data <- readRDS("C:/git_projects/GISD/Data/SHP/BRD_Gemeinden.rds") %>% lazy_dt() %>% mutate(Gemeindekennziffer = as.numeric(id)) %>% select(-id) %>% left_join(GISD_data_Gem, by = "Gemeindekennziffer") %>% lazy_dt()
@@ -39,12 +59,49 @@ Gemeinden_data <- as_tibble(Gemeinden_data)
 
 Gemeinden_data <- Gemeinden_data %>% mutate(GISD_Score = ifelse(is.na(GISD_Score.x) == TRUE, GISD_Score.y, GISD_Score.x), GISD_5 = ifelse(is.na(GISD_5.x) == TRUE, GISD_5.y, GISD_5.x), GISD_10 = ifelse(is.na(GISD_10.x) == TRUE, GISD_10.y, GISD_10.x))
 
+Gemeinden_data <- Gemeinden_data %>% mutate(GISD_5 = case_when(GISD_5 == 1 ~ "Quintile 1",
+                                                   GISD_5 == 2 ~ "Quintil 2",
+                                                   GISD_5 == 3 ~ "Quintil 3",
+                                                   GISD_5 == 4 ~ "Quintil 4",
+                                                   GISD_5 == 5 ~ "Quintil 5"),
+                                  GISD_5 = fct_relevel(GISD_5, "Quintil 5", "Quintil 4", "Quintil 3", "Quintil 2", "Quintil 1"),
+                                  GISD_10 = case_when(GISD_10 == 1 ~ "Dezil 1",
+                                                   GISD_10 == 2 ~ "Dezil 2",
+                                                   GISD_10 == 3 ~ "Dezil 3",
+                                                   GISD_10 == 4 ~ "Dezil 4",
+                                                   GISD_10 == 5 ~ "Dezil 5",
+                                                   GISD_10 == 6 ~ "Dezil 6",
+                                                   GISD_10 == 7 ~ "Dezil 7",
+                                                   GISD_10 == 8 ~ "Dezil 8",
+                                                   GISD_10 == 9 ~ "Dezil 9",
+                                                   GISD_10 == 10 ~ "Dezil 10"),
+                                  GISD_10 = fct_relevel(GISD_10, "Dezil 10", "Dezil 9", "Dezil 8", "Dezil 7", "Dezil 6", "Dezil 5", "Dezil 4", "Dezil 3", "Dezil 2", "Dezil 1"))
+
 
 GISD_data_Lander <- read.csv("C:/git_projects/GISD/Outfiles/2021_v2/Bund/Raumordnungsregion/Raumordnungsregion.csv") %>% mutate(ROR_id = Raumordnungsregion.Nr) %>%  select(ROR_id, GISD_Score, GISD_5, GISD_10) %>% distinct(ROR_id, .keep_all = TRUE) %>% unique() %>% lazy_dt()
+
 
 Lander_data <- readRDS("C:/git_projects/GISD/Data/SHP/ROR_map.rds") %>% lazy_dt() %>% mutate(ROR_id = as.numeric(id)) %>% select(-id) %>% left_join(GISD_data_Lander, by = "ROR_id") %>% lazy_dt()
 
 Lander_data <- as_tibble(Lander_data)
+
+Lander_data <- Lander_data %>% mutate(GISD_5 = case_when(GISD_5 == 1 ~ "Quintile 1",
+                                                   GISD_5 == 2 ~ "Quintil 2",
+                                                   GISD_5 == 3 ~ "Quintil 3",
+                                                   GISD_5 == 4 ~ "Quintil 4",
+                                                   GISD_5 == 5 ~ "Quintil 5"),
+                                  GISD_5 = fct_relevel(GISD_5, "Quintil 5", "Quintil 4", "Quintil 3", "Quintil 2", "Quintil 1"),
+                                  GISD_10 = case_when(GISD_10 == 1 ~ "Dezil 1",
+                                                   GISD_10 == 2 ~ "Dezil 2",
+                                                   GISD_10 == 3 ~ "Dezil 3",
+                                                   GISD_10 == 4 ~ "Dezil 4",
+                                                   GISD_10 == 5 ~ "Dezil 5",
+                                                   GISD_10 == 6 ~ "Dezil 6",
+                                                   GISD_10 == 7 ~ "Dezil 7",
+                                                   GISD_10 == 8 ~ "Dezil 8",
+                                                   GISD_10 == 9 ~ "Dezil 9",
+                                                   GISD_10 == 10 ~ "Dezil 10"),
+                                  GISD_10 = fct_relevel(GISD_10, "Dezil 10", "Dezil 9", "Dezil 8", "Dezil 7", "Dezil 6", "Dezil 5", "Dezil 4", "Dezil 3", "Dezil 2", "Dezil 1"))
 ```
 
 
@@ -52,10 +109,9 @@ Lander_data <- as_tibble(Lander_data)
 ```{r echo=FALSE}
 ggplot(Gemeinden_data, aes(long, lat, group = group, fill = GISD_Score)) +
   geom_polygon() +
-  scale_fill_gradient() +
+  scale_fill_rki(palette = "main", name = "GISD-Score", discrete = FALSE) +
   coord_equal() +
-  theme_rki_void() +
-  labs(fill = "GISD-Score")
+  theme_rki_void()
 
 #which(is.na(Gemeinden_data$GISD_Score))
 ```
@@ -63,73 +119,65 @@ ggplot(Gemeinden_data, aes(long, lat, group = group, fill = GISD_Score)) +
 ```{r echo=FALSE}
 ggplot(Gemeinden_data, aes(long, lat, group = group, fill = GISD_5)) +
   geom_polygon() +
-  scale_fill_gradient(breaks = c(1, 2, 3, 4, 5)) +
+  scale_fill_rki(palette = "main", name = "GISD-Score (Quintile)") +
   coord_equal() +
-  theme_rki_void() +
-  labs(fill = "GISD-Score (Quintile)")
+  theme_rki_void()
 ```
 
 ```{r echo=FALSE}
 ggplot(Gemeinden_data, aes(long, lat, group = group, fill = GISD_10)) +
   geom_polygon() +
-  scale_fill_gradient(breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)) +
+  scale_fill_rki(palette = "main", name = "GISD-Score (Dezile)") +
   coord_equal() +
-  theme_rki_void() +
-  labs(fill = "GISD-Score (Dezile)")
+  theme_rki_void()
 ```
 
 ## GISD-Score auf Kreisebene
 ```{r echo=FALSE}
-ggplot(Kreise_data, aes(long, lat, group = group, fill=GISD_Score)) +
-  geom_polygon() +
-  scale_fill_gradient() +
+ggplot(Kreise_data, aes(long, lat, group = group, fill = GISD_Score)) +
+  geom_polygon(color = "black") +
+  scale_fill_rki(palette = "main", name = "GISD-Score", discrete = FALSE) +
   coord_equal() +
-  theme_rki_void() +
-  labs(fill = "GISD-Score")
+  theme_rki_void()
 ```
 
 ```{r echo=FALSE}
-ggplot(Kreise_data, aes(long, lat, group = group, fill=GISD_5)) +
-  geom_polygon() +
-  scale_fill_gradient(breaks = c(1, 2, 3, 4, 5)) +
+ggplot(Kreise_data, aes(long, lat, group = group, fill = GISD_5)) +
+  geom_polygon(color = "black") +
+  scale_fill_rki(palette = "main", name = "GISD-Score (Quintile)") +
   coord_equal() +
-  theme_rki_void() +
-  labs(fill = "GISD-Score (Quintile)")
+  theme_rki_void()
 ```
 
 ```{r echo=FALSE}
-ggplot(Kreise_data, aes(long, lat, group = group, fill=GISD_10)) +
-  geom_polygon() +
-  scale_fill_gradient(breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)) +
+ggplot(Kreise_data, aes(long, lat, group = group, fill = GISD_5)) +
+  geom_polygon(color = "black") +
+  scale_fill_rki(palette = "main", name = "GISD-Score (Dezile)") +
   coord_equal() +
-  theme_rki_void() +
-  labs(fill = "GISD-Score (Dezile)")
+  theme_rki_void()
 ```
 
 ## GISD-Score nach Raumordnungsregion
 ```{r echo=FALSE}
-ggplot(Lander_data, aes(long, lat, group = group, fill=GISD_Score)) +
-  geom_polygon() +
-  scale_fill_gradient() +
+ggplot(Lander_data, aes(long, lat, group = group, fill = GISD_Score)) +
+  geom_polygon(color = "black") +
+  scale_fill_rki(palette = "main", name = "GISD-Score", discrete = FALSE) +
   coord_equal() +
-  theme_rki_void() +
-  labs(fill = "GISD-Score")
+  theme_rki_void()
 ```
 
 ```{r echo=FALSE}
-ggplot(Lander_data, aes(long, lat, group = group, fill=GISD_5)) +
-  geom_polygon() +
-  scale_fill_gradient(breaks = c(1, 2, 3, 4, 5)) +
+ggplot(Lander_data, aes(long, lat, group = group, fill = GISD_5)) +
+  geom_polygon(color = "black") +
+  scale_fill_rki(palette = "main", name = "GISD-Score (Quintile)") +
   coord_equal() +
-  theme_rki_void() +
-  labs(fill = "GISD-Score (Quintile)")
+  theme_rki_void()
 ```
 
 ```{r echo=FALSE}
-ggplot(Lander_data, aes(long, lat, group = group, fill=GISD_10)) +
-  geom_polygon() +
-  scale_fill_gradient(breaks = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)) +
+ggplot(Lander_data, aes(long, lat, group = group, fill = GISD_10)) +
+  geom_polygon(color = "black") +
+  scale_fill_rki(palette = "main", name = "GISD-Score (Dezile)") +
   coord_equal() +
-  theme_rki_void() +
-  labs(fill = "GISD-Score (Dezile)")
+  theme_rki_void()
 ```
